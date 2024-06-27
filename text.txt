@@ -1,0 +1,64 @@
+import Link from "next/link"
+async function getData(){
+  const res = await fetch(`https://dummyjson.com/products`)
+  if(!res.ok){
+      throw new Error("Failed To Fetch")
+  }
+  return res.json()
+}
+async function Products() {
+  const data = await getData()
+
+  return (
+    <div>
+
+         {data.products.map(product => {
+          return(
+            <>
+        <br /> <Link href={`/Products/${product.id}`} key={product.id}>
+       {product.title}
+      </Link>
+            </>
+          )
+    })}
+    </div>
+  )
+}
+
+export default Products
+
+.product-price {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 4px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+  }
+
+  .add-to-cart {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .add-to-cart:hover {
+    background-color: #335c30;
+  }
+
+async function fetchData() {
+    try {
+      const request = await fetch("https://dummyjson.com/products");
+      const result = await request.json();
+      console.log(result.products);
+      return result.products
+    } catch (error) {
+      console.error(error);
+
+    }
+  };
+  export default fetchData
