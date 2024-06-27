@@ -2,7 +2,6 @@
     background-color:#777;
     padding: 20px;
     text-align: center;
-    color:var(--secondColor)
     /* margin-top: 30px; */
   }
 
@@ -14,6 +13,7 @@
 
   .contact p {
     font-size: 16px;
+      color:var(--secondColor)
   }
 
   .contact .contact-info {
